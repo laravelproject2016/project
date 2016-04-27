@@ -1,0 +1,9 @@
+<?php $__env->startSection('main'); ?>
+
+    <h2><?php echo $model->title; ?></h2>
+    <?php echo $model->present()->thumb(null, 200); ?>
+
+    <p><a href="<?php echo $model->website; ?>" target="_blank"><?php echo $model->website; ?></a></p>
+    <div><?php echo $model->body; ?></div>
+
+<?php $__env->stopSection(); ?>

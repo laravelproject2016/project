@@ -1,0 +1,28 @@
+<?php $__env->startSection('h1'); ?> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
+
+<div class="row">
+
+    <div class="col-sm-12">
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h2 class="panel-title"><?php echo \Illuminate\Support\Facades\Lang::get('dashboard::global.Welcome, :name!', array('name' => Sentry::getUser()->first_name)); ?></h2>
+            </div>
+
+            <div class="panel-body">
+                <?php echo $welcomeMessage; ?>
+
+            </div>
+
+        </div>
+
+        <?php echo $__env->make('history.admin.latest', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    </div>
+
+</div>
+
+<?php $__env->stopSection(); ?>

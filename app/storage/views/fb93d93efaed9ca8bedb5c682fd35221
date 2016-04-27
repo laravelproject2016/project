@@ -1,0 +1,7 @@
+    <div class="form-group">
+        <button class="btn-primary btn" value="true" id="exit" name="exit" type="submit"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.save and exit'); ?></button>
+        <button class="btn-default btn" type="submit"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.save'); ?></button>
+        <?php if(method_exists($model, 'previewUri') && $previewUri = $model->previewUri()): ?>
+        <a class="btn btn-default pull-right btn-preview" href="<?php echo $previewUri; ?>?preview=true"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.preview'); ?></a>
+        <?php endif; ?>
+    </div>

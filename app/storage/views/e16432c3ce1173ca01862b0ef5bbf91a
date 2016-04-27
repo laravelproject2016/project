@@ -1,0 +1,17 @@
+<?php $__env->startSection('main'); ?>
+
+    <h1>
+        <a href="<?php echo route('admin.menus.edit', $menu->id); ?>" title="<?php echo trans('menulinks::global.Back'); ?>">
+            <span class="text-muted fa fa-arrow-circle-left"></span><span class="sr-only"><?php echo trans('menulinks::global.Back'); ?></span>
+        </a>
+        <?php echo $model->present()->title; ?>
+
+    </h1>
+
+    <?php echo Form::model( $model, array( 'route' => array('admin.menus.menulinks.update', $menu->id, $model->id), 'files' => true, 'method' => 'put', 'role' => 'form' ) ); ?>
+
+        <?php echo $__env->make('menulinks.admin._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>

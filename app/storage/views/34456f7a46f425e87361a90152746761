@@ -1,0 +1,56 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//maps.googleapis.com/maps/api/js?sensor=false&amp;language='.Config::get('app.locale'))); ?>
+
+    <?php echo HTML::script(asset('js/public/gmaps.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
+
+    <h2><?php echo Str::title(trans_choice('places::global.places', 2)); ?></h2>
+
+    <div class="row">
+
+        <div class="col-sm-4">
+
+            <form method="get" role="form">
+                <label for="string" class="sr-only"><?php echo \Illuminate\Support\Facades\Lang::get('db.Search'); ?></label>
+                <div class="input-group">
+                    <input id="string" type="text" placeholder="<?php echo trans('db.Search'); ?>" name="string" value="<?php echo Input::get('string'); ?>" class="form-control input-sm">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-sm btn-primary"><?php echo \Illuminate\Support\Facades\Lang::get('db.Search'); ?></button>
+                    </span>
+                </div>
+            </form>
+
+            <h3>
+            <?php echo $places->count(); ?> <?php echo \Illuminate\Support\Facades\Lang::choice('places::global.places', $places->count()); ?>
+            <?php if(Input::get('string')): ?> <?php echo \Illuminate\Support\Facades\Lang::get('for'); ?>
+                “<?php echo Input::get('string'); ?>”
+            <?php endif; ?>
+            </h3>
+
+            <ul class="list-unstyled addresses">
+                <?php foreach($places as $place): ?>
+                <li id="item-<?php echo $place->id; ?>">
+                    <div class="btns">
+                        <?php if($place->latitude && $place->longitude): ?>
+                        <a class="btn-map" href="" title="<?php echo trans('db.Show on map'); ?>"><i class="fa fa-map-marker"></i><span class="sr-only"><?php echo trans('db.Show on map'); ?></span></a>
+                        <?php endif; ?>
+                        <a href="<?php echo route($lang.'.places.slug', array($place->slug)); ?>" title="<?php echo trans('db.More'); ?>"><span class="fa fa-plus"></span><span class="sr-only"><?php echo trans('db.More'); ?></span></a>
+                    </div>
+                    <?php echo $place->title; ?>
+
+                </li>
+                <?php endforeach; ?>
+            </ul>
+
+        </div>
+
+        <div class="col-sm-8">
+            <div id="map" class="map"></div>
+        </div>
+
+    </div>
+
+<?php $__env->stopSection(); ?>

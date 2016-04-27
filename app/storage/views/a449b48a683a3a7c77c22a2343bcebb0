@@ -1,0 +1,183 @@
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="row">
+
+    <?php echo Form::hidden('id');; ?>
+
+    <?php echo Form::hidden('locale', App::getLocale());; ?>
+
+    <?php echo Form::honeypot('my_name', 'my_time'); ?>
+
+    <?php echo Form::hidden('my_time', Crypt::encrypt(time()-60));; ?>
+
+
+    <div class="col-sm-6">
+
+        <?php /* Title */ ?>
+        <div class="row">
+            <div class="col-xs-6 form-group <?php if($errors->has('title')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('title', trans('validation.attributes.title'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('title', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('title', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+
+        <?php /* First name */ ?>
+        <div class="form-group <?php if($errors->has('first_name')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('first_name', trans('validation.attributes.first_name'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('first_name', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('first_name', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+        <?php /* Last name */ ?>
+        <div class="form-group <?php if($errors->has('last_name')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('last_name', trans('validation.attributes.last_name'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('last_name', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('last_name', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+        <?php /* Email */ ?>
+        <div class="form-group <?php if($errors->has('email')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('email', trans('validation.attributes.email'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('email', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('email', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+        <?php /* Message */ ?>
+        <div class="form-group <?php if($errors->has('message')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('message', trans('validation.attributes.message'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::textarea('message', null, array('class' => 'form-control', 'rows' => 5)); ?>
+
+            <?php echo $errors->first('message', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <div class="row">
+            <?php /* Language */ ?>
+            <div class="col-xs-6 form-group <?php if($errors->has('language')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('language', trans('validation.attributes.language'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('language', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('language', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <?php /* Website */ ?>
+            <div class="col-xs-6 form-group <?php if($errors->has('website')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('website', trans('validation.attributes.website'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('website', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('website', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+
+            <?php /* Company */ ?>
+            <div class="col-xs-6 form-group <?php if($errors->has('company')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('company', trans('validation.attributes.company'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('company', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('company', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+
+        <?php /* Address */ ?>
+        <div class="form-group <?php if($errors->has('address')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('address', trans('validation.attributes.address'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('address', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('address', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+        <div class="row">
+            <?php /* Postcode */ ?>
+            <div class="col-xs-6 form-group <?php if($errors->has('postcode')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('postcode', trans('validation.attributes.postcode'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('postcode', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('postcode', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+
+            <?php /* City */ ?>
+            <div class="col-xs-6 form-group <?php if($errors->has('city')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('city', trans('validation.attributes.city'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('city', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('city', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+
+        <?php /* Country */ ?>
+        <div class="form-group <?php if($errors->has('country')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('country', trans('validation.attributes.country'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('country', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('country', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+        <div class="row">
+            <?php /* Phone */ ?>
+            <div class="col-xs-6 form-group <?php if($errors->has('phone')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('phone', trans('validation.attributes.phone'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('phone', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('phone', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+
+            <?php /* Mobile */ ?>
+            <div class="col-xs-6 form-group <?php if($errors->has('mobile')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('mobile', trans('validation.attributes.mobile'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('mobile', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('mobile', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+
+        <?php /* Fax */ ?>
+        <div class="form-group <?php if($errors->has('fax')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('fax', trans('validation.attributes.fax'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('fax', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('fax', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+    </div>
+
+</div>

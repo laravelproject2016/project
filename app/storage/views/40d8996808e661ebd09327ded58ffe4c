@@ -1,0 +1,58 @@
+<?php $__env->startSection('main'); ?>
+
+<h1><?php echo ucfirst(trans('global.settings')); ?></h1>
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+    <?php echo Form::model($data, array('method' => 'post', 'role' => 'form')); ?>
+
+
+        <?php echo $__env->make('settings.admin._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo Form::close(); ?>
+
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <div>
+            <a href="<?php echo route('backup'); ?>" class="btn btn-default"><i class="fa fa-download"></i> <?php echo trans('settings::global.Backup DB'); ?></a>
+            <a href="<?php echo route('cache.clear'); ?>" class="btn btn-default"><span class="fa fa-trash-o"></span> <?php echo trans('settings::global.Clear cache'); ?></a>
+        </div>
+
+        <table class="table table-condensed">
+            <thead>
+                <tr><th colspan="2"><?php echo \Illuminate\Support\Facades\Lang::get('settings::global.System info'); ?></th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-sm-6"><?php echo \Illuminate\Support\Facades\Lang::get('settings::global.Environment'); ?></td>
+                    <td class="col-sm-6"><b><?php echo App::environment();; ?></b></td>
+                </tr>
+                <tr>
+                    <td><?php echo \Illuminate\Support\Facades\Lang::get('settings::global.System locales'); ?></td>
+                    <td>
+                        <div class="max-height">
+                            <b><?php try { system('locale -a'); } catch (Exception $e) { echo $e->getMessage(); } ?></b>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><?php echo \Illuminate\Support\Facades\Lang::get('settings::global.Active locale'); ?></td>
+                    <td><b><?php echo Config::get('app.locale');; ?></b></td>
+                </tr>
+                <tr>
+                    <td><?php echo \Illuminate\Support\Facades\Lang::get('settings::global.Cache'); ?></td>
+                    <td><b><?php echo Config::get('app.cache') ? trans('settings::global.Yes') : trans('settings::global.No') ; ?></b></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<?php $__env->stopSection(); ?>

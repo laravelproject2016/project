@@ -1,0 +1,2 @@
+<?php echo e(isset($content) ? $content : ''); ?>
+

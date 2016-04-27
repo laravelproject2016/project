@@ -1,0 +1,23 @@
+<?php $__env->startSection('main'); ?>
+
+    <h2><?php echo Str::title(trans_choice('events::global.events', 2)); ?></h2>
+
+    <?php if($models->count()): ?>
+    <ul>
+        <?php foreach($models as $model): ?>
+        <li>
+            <strong><?php echo $model->title; ?></strong>
+            <div class="date"><?php echo $model->present()->dateFromTo; ?> <br><?php echo $model->present()->timeFromTo; ?></div>
+            <a href="<?php echo route($lang.'.events.slug', $model->slug); ?>"><?php echo \Illuminate\Support\Facades\Lang::get('db.More'); ?></a>
+            <a class="btn btn-default btn-xs" href="<?php echo route($lang.'.events.slug.ics', $model->slug); ?>">
+                <span class="fa fa-calendar"></span> <?php echo \Illuminate\Support\Facades\Lang::get('db.Add to calendar'); ?>
+            </a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+
+    <?php echo $models->appends(Input::except('page'))->links(); ?>
+
+
+<?php $__env->stopSection(); ?>

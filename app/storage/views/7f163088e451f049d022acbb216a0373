@@ -1,0 +1,146 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+    <?php echo HTML::script(asset('//maps.googleapis.com/maps/api/js?sensor=false&amp;language=fr')); ?>
+
+    <?php echo HTML::script(asset('js/admin/gmaps.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('otherSideLink'); ?>
+    <?php echo $__env->make('admin._navbar-public-link', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('id'); ?>
+
+
+<?php echo $__env->make('admin._image-fieldset', ['field' => 'image'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#tab-main" data-target="#tab-main" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Content'); ?></a>
+    </li>
+    <li>
+        <a href="#tab-info" data-target="#tab-info" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Info'); ?></a>
+    </li>
+</ul>
+
+<div class="tab-content">
+
+    <?php /* Main tab */ ?>
+    <div class="tab-pane fade in active" id="tab-main">
+
+        <?php echo $__env->make('admin._tabs-lang-form', ['target' => 'content'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="tab-content">
+
+        <?php foreach($locales as $lang): ?>
+
+            <div class="tab-pane fade <?php if($locale == $lang): ?>in active <?php endif; ?>" id="content-<?php echo $lang; ?>">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <?php echo Form::label($lang.'[title]', trans('validation.attributes.title')); ?>
+
+                        <?php echo Form::text($lang.'[title]', $model->translate($lang)->title, array('class' => 'form-control')); ?>
+
+                    </div>
+                    <div class="col-md-6 form-group <?php if($errors->has($lang.'.slug')): ?>has-error <?php endif; ?>">
+                        <?php echo Form::label($lang.'[slug]', trans('validation.attributes.slug'), array('class' => 'control-label')); ?>
+
+                        <div class="input-group">
+                            <?php echo Form::text($lang.'[slug]', $model->translate($lang)->slug, array('class' => 'form-control')); ?>
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-slug <?php if($errors->has($lang.'.slug')): ?>btn-danger <?php endif; ?>" type="button"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.generate'); ?></button>
+                            </span>
+                        </div>
+                        <?php echo $errors->first($lang.'.slug', '<p class="help-block">:message</p>'); ?>
+
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <?php echo Form::checkbox($lang.'[status]', 1, $model->translate($lang)->status); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.online'); ?>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[body]', trans('validation.attributes.body')); ?>
+
+                    <?php echo Form::textarea($lang.'[body]', $model->translate($lang)->body, array('class' => 'editor form-control')); ?>
+
+                </div>
+            </div>
+
+        <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+    <?php /* Info tab */ ?>
+    <div class="tab-pane fade in" id="tab-info">
+
+        <div class="form-group">
+            <?php echo Form::label('address', trans('validation.attributes.address'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('address', null, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group <?php if($errors->has('email')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('email', trans('validation.attributes.email'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('email', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('email', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+            <div class="col-sm-6 form-group <?php if($errors->has('website')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('website', trans('validation.attributes.website'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('website', null, array('class' => 'form-control')); ?>
+
+                <?php echo $errors->first('website', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <?php echo Form::label('phone', trans('validation.attributes.phone'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('phone', null, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="col-sm-6 form-group">
+                <?php echo Form::label('fax', trans('validation.attributes.fax'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('fax', null, array('class' => 'form-control')); ?>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <?php echo Form::label('latitude', trans('validation.attributes.latitude'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('latitude', null, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="col-sm-6 form-group">
+                <?php echo Form::label('longitude', trans('validation.attributes.longitude'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('longitude', null, array('class' => 'form-control')); ?>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

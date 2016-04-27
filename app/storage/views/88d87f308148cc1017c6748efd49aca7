@@ -1,0 +1,5 @@
+<?php $__env->startSection('main'); ?>
+
+<?php echo $__env->make(Request::segment(2) . '.admin.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>

@@ -1,0 +1,50 @@
+<?php $__env->startSection('page'); ?>
+
+    <div class="row">
+
+        <div class="col-sm-4">
+
+            <?php if($latestNews = News::latest(3) and $latestNews->count()): ?>
+            <h3><?php echo \Illuminate\Support\Facades\Lang::get('db.Latest news'); ?></h3>
+            <ul>
+                <?php foreach($latestNews as $news): ?>
+                <li>
+                    <strong><?php echo $news->title; ?></strong><br>
+                    <span class="date"><?php echo $news->present()->dateLocalized; ?></span><br>
+                    <a href="<?php echo route($lang . '.news.slug', $news->slug); ?>" class="btn btn-default btn-xs"><?php echo \Illuminate\Support\Facades\Lang::get('db.More'); ?></a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <a href="<?php echo route($lang . '.news'); ?>" class="btn btn-default btn-xs"><?php echo \Illuminate\Support\Facades\Lang::get('db.All news'); ?></a>
+            <?php endif; ?>
+
+            <?php if($incomingEvents = Events::incoming() and $incomingEvents->count()): ?>
+            <h3><?php echo \Illuminate\Support\Facades\Lang::get('db.Incoming events'); ?></h3>
+            <ul>
+                <?php foreach($incomingEvents as $event): ?>
+                <li>
+                    <strong><?php echo $event->title; ?></strong><br>
+                    <span class="date"><?php echo $event->present()->dateFromTo; ?></span><br>
+                    <a href="<?php echo route($lang . '.events.slug', $event->slug); ?>" class="btn btn-default btn-xs"><?php echo \Illuminate\Support\Facades\Lang::get('db.More'); ?></a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <a href="<?php echo route($lang . '.events'); ?>" class="btn btn-default btn-xs"><?php echo \Illuminate\Support\Facades\Lang::get('db.All events'); ?></a>
+            <?php endif; ?>
+
+        </div>
+
+        <div class="col-sm-8">
+            <?php echo $model->body; ?>
+
+            <div class="well">
+                <?php echo Blocks::build('block1'); ?>
+
+            </div>
+        </div>
+
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('pages.public.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

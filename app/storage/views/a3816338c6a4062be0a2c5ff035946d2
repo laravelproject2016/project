@@ -1,0 +1,93 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<div class="row">
+    <div class="form-group col-sm-12">
+        <button class="btn-primary btn" type="submit"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.save'); ?></button>
+    </div>
+</div>
+
+<label><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.websiteTitle'); ?></label>
+<?php foreach($locales as $lang): ?>
+    <div class="row">
+        <div class="col-sm-9 form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><?php echo strtoupper($lang); ?></span>
+                <?php echo Form::text($lang.'[websiteTitle]', null, array('class' => 'form-control')); ?>
+
+            </div>
+        </div>
+        <div class="col-sm-3 checkbox">
+            <label>
+                <?php echo Form::checkbox($lang.'[status]', 1); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.online'); ?>
+            </label>
+        </div>
+    </div>
+<?php endforeach; ?>
+
+<div class="form-group <?php if($errors->has('webmasterEmail')): ?>has-error <?php endif; ?>">
+    <?php echo Form::label('webmasterEmail', trans('validation.attributes.webmasterEmail'), array('class' => 'control-label')); ?>
+
+    <?php echo Form::text('webmasterEmail', null, array('class' => 'form-control')); ?>
+
+    <?php echo $errors->first('webmasterEmail', '<p class="help-block">:message</p>'); ?>
+
+</div>
+<div class="form-group <?php if($errors->has('welcomeMessageURL')): ?>has-error <?php endif; ?>">
+    <?php echo Form::label('welcomeMessageURL', trans('validation.attributes.welcomeMessageURL'), array('class' => 'control-label')); ?>
+
+    <?php echo Form::text('welcomeMessageURL', null, array('class' => 'form-control')); ?>
+
+    <?php echo $errors->first('welcomeMessageURL', '<p class="help-block">:message</p>'); ?>
+
+</div>
+<div class="form-group <?php if($errors->has('welcomeMessage')): ?>has-error <?php endif; ?>">
+    <?php echo Form::label('welcomeMessage', trans('validation.attributes.welcomeMessage'), array('class' => 'control-label')); ?>
+
+    <?php echo Form::textarea('welcomeMessage', null, array('class' => 'form-control', 'rows' => '3')); ?>
+
+    <?php echo $errors->first('welcomeMessage', '<p class="help-block">:message</p>'); ?>
+
+</div>
+<div class="form-group <?php if($errors->has('adminLocale')): ?>has-error <?php endif; ?>">
+    <?php echo Form::label('adminLocale', trans('validation.attributes.adminLocale'), array('class' => 'control-label')); ?>
+
+    <?php echo Form::select('adminLocale', array_combine($locales, $locales), null, array('class' => 'form-control')); ?>
+
+    <?php echo $errors->first('adminLocale', '<p class="help-block">:message</p>'); ?>
+
+</div>
+<div class="form-group <?php if($errors->has('typekitCode')): ?>has-error <?php endif; ?>">
+    <?php echo Form::label('typekitCode', trans('validation.attributes.typekitCode'), array('class' => 'control-label')); ?>
+
+    <?php echo Form::text('typekitCode', null, array('class' => 'form-control')); ?>
+
+    <?php echo $errors->first('typekitCode', '<p class="help-block">:message</p>'); ?>
+
+</div>
+<div class="form-group">
+    <?php echo Form::label('googleAnalyticsCode', trans('validation.attributes.googleAnalyticsCode'), array('class' => 'control-label')); ?>
+
+    <?php echo Form::text('googleAnalyticsCode', null, array('class' => 'form-control')); ?>
+
+</div>
+<div class="checkbox">
+    <label>
+        <?php echo Form::checkbox('langChooser', 1); ?> <?php echo trans('validation.attributes.langChooser'); ?>
+
+    </label>
+</div>
+<div class="checkbox">
+    <label>
+        <?php echo Form::checkbox('authPublic', 1); ?> <?php echo trans('validation.attributes.authPublic'); ?>
+
+    </label>
+</div>
+<div class="checkbox">
+    <label>
+        <?php echo Form::checkbox('register', 1); ?> <?php echo trans('validation.attributes.registration allowed'); ?>
+
+    </label>
+</div>

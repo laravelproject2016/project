@@ -1,0 +1,20 @@
+        <div class="clearfix well media <?php if($errors->has($field)): ?>has-error <?php endif; ?>">
+            <?php if($model->$field): ?>
+            <div>
+                <?php echo $model->present()->thumb(150, 150, ['resize'], $field); ?>
+
+                <small class="text-danger delete-attachment" data-table="<?php echo $model->getTable(); ?>" data-id="<?php echo $model->id; ?>" data-field="<?php echo $field; ?>">Supprimer</small>
+            </div>
+            <?php endif; ?>
+            <div class="media-body">
+                <?php echo Form::label($field, trans('validation.attributes.' . $field), array('class' => 'control-label')); ?>
+
+                <?php echo Form::file($field); ?>
+
+                <span class="help-block">
+                    <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.max :size MB', array('size' => 2)); ?>
+                </span>
+                <?php echo $errors->first($field, '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>

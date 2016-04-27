@@ -1,0 +1,143 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="row">
+
+    <?php echo Form::hidden('id');; ?>
+
+
+    <div class="col-sm-6">
+
+        <?php echo $__env->make('admin._tabs-lang', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="tab-content">
+
+            <?php foreach($locales as $lang): ?>
+
+            <div class="tab-pane fade <?php if($locale == $lang): ?>in active <?php endif; ?>" id="<?php echo $lang; ?>">
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[alt_attribute]', trans('validation.attributes.alt_attribute')); ?>
+
+                    <?php echo Form::text($lang.'[alt_attribute]', $model->translate($lang)->alt_attribute, array('class' => 'form-control')); ?>
+
+                </div>
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[description]', trans('validation.attributes.description')); ?>
+
+                    <?php echo Form::textarea($lang.'[description]', $model->translate($lang)->description, array('class' => 'form-control')); ?>
+
+                </div>
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[keywords]', trans('validation.attributes.keywords')); ?>
+
+                    <?php echo Form::text($lang.'[keywords]', $model->translate($lang)->keywords, array('class' => 'form-control')); ?>
+
+                </div>
+            </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <?php echo Form::hidden('folder_id', $model->folder_id ?: 0); ?>
+
+        <?php echo Form::hidden('gallery_id', $model->gallery_id ?: 0); ?>
+
+        <?php echo Form::hidden('user_id', $model->user_id ?: 0); ?>
+
+        <?php echo Form::hidden('type'); ?>
+
+        <?php echo Form::hidden('position', $model->position ?: 0); ?>
+
+        <?php echo Form::hidden('path'); ?>
+
+        <?php echo Form::hidden('filename'); ?>
+
+        <?php echo Form::hidden('extension'); ?>
+
+        <?php echo Form::hidden('mimetype'); ?>
+
+        <?php echo Form::hidden('width'); ?>
+
+        <?php echo Form::hidden('height'); ?>
+
+        <?php echo Form::hidden('download_count', $model->download_count ?: 0); ?>
+
+
+        <?php echo $__env->make('admin._image-fieldset', ['field' => 'filename'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <table class="table table-condensed">
+            <thead>
+                <th><?php echo trans('validation.attributes.file information'); ?></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th><?php echo trans('validation.attributes.path'); ?></th>
+                    <td><?php echo $model->path; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.filename'); ?></th>
+                    <td><?php echo $model->filename; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.extension'); ?></th>
+                    <td><?php echo $model->extension; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.mimetype'); ?></th>
+                    <td><?php echo $model->mimetype; ?></td>
+                </tr>
+                <?php if($model->width): ?>
+                <tr>
+                    <th><?php echo trans('validation.attributes.width'); ?></th>
+                    <td><?php echo $model->width; ?> px</td>
+                </tr>
+                <?php endif; ?>
+                <?php if($model->height): ?>
+                <tr>
+                    <th><?php echo trans('validation.attributes.height'); ?></th>
+                    <td><?php echo $model->height; ?> px</td>
+                </tr>
+                <?php endif; ?>
+                <!-- <tr>
+                    <th><?php echo trans('validation.attributes.user_id'); ?></th>
+                    <td><?php echo $model->user_id; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.name'); ?></th>
+                    <td><?php echo $model->name; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.folder_id'); ?></th>
+                    <td><?php echo $model->folder_id; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.user_id'); ?></th>
+                    <td><?php echo $model->user_id; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.type'); ?></th>
+                    <td><?php echo $model->type; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo trans('validation.attributes.position'); ?></th>
+                    <td><?php echo $model->position; ?></td>
+                </tr> -->
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

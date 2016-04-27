@@ -1,0 +1,98 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('otherSideLink'); ?>
+    <?php echo $__env->make('admin._navbar-public-link', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('id');; ?>
+
+
+<ul class="nav nav-tabs">
+    <li class="<?php if(input::get('tab') != 'tab-files'): ?>active <?php endif; ?>">
+        <a href="#tab-main" data-target="#tab-main" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Content'); ?></a>
+    </li>
+    <li class="<?php if(input::get('tab') == 'tab-files'): ?>active <?php endif; ?>">
+        <a href="#tab-files" data-target="#tab-files" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Files'); ?></a>
+    </li>
+</ul>
+
+<div class="tab-content">
+
+    <?php /* Main tab */ ?>
+    <div class="tab-pane fade in <?php if(input::get('tab') != 'tab-files'): ?>active <?php endif; ?>" id="tab-main">
+
+        <div class="form-group <?php if($errors->has('name')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('name', trans('validation.attributes.name'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('name', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('name', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+
+        <?php echo $__env->make('admin._tabs-lang', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="tab-content">
+
+            <?php foreach($locales as $lang): ?>
+
+            <div class="tab-pane fade <?php if($locale == $lang): ?>in active <?php endif; ?>" id="<?php echo $lang; ?>">
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[title]', trans('validation.attributes.title')); ?>
+
+                    <?php echo Form::text($lang.'[title]', $model->translate($lang)->title, array('class' => 'form-control')); ?>
+
+                </div>
+                <div class="form-group <?php if($errors->has($lang.'.slug')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label($lang.'[slug]', trans('validation.attributes.slug'), array('class' => 'control-label')); ?>
+
+                    <div class="input-group">
+                        <?php echo Form::text($lang.'[slug]', $model->translate($lang)->slug, array('class' => 'form-control')); ?>
+
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-slug <?php if($errors->has($lang.'.slug')): ?>btn-danger <?php endif; ?>" type="button"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.generate'); ?></button>
+                        </span>
+                    </div>
+                    <?php echo $errors->first($lang.'.slug', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <?php echo Form::checkbox($lang.'[status]', 1, $model->translate($lang)->status); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.online'); ?>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[body]', trans('validation.attributes.body')); ?>
+
+                    <?php echo Form::textarea($lang.'[body]', $model->translate($lang)->body, array('class' => 'editor form-control')); ?>
+
+                </div>
+            </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+    
+    <?php /* Galleries tab */ ?>
+    <div class="tab-pane fade in <?php if(input::get('tab') == 'tab-files'): ?>active <?php endif; ?>" id="tab-files">
+
+        <?php if($model->id): ?>
+            <?php echo $__env->make('galleries.admin.files', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php else: ?>
+            <p class="alert alert-info"><?php echo \Illuminate\Support\Facades\Lang::get('galleries::global.Save your gallery, then add files.'); ?></p>
+        <?php endif; ?>
+
+    </div>
+
+</div>

@@ -1,0 +1,54 @@
+<div class="checkbox">
+    <input type="hidden" value="0" name="permissions[dashboard]">
+    <label>
+        <input type="checkbox" value="1" <?php if(isset($permissions['dashboard']) && $permissions['dashboard']): ?>checked="checked"<?php endif; ?> name="permissions[dashboard]"> Dashboard
+    </label>
+</div>
+<div class="checkbox">
+    <input type="hidden" value="0" name="permissions[settings.index]">
+    <label>
+        <input type="checkbox" value="1" <?php if(isset($permissions['settings.index']) && $permissions['settings.index']): ?>checked="checked"<?php endif; ?> name="permissions[settings.index]"> Settings
+    </label>
+</div>
+<div class="table-responsive">
+    <table class="table table-condensed table-permissions table-checkboxes">
+        <thead>
+            <tr>
+                <th></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.Index'); ?></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.View'); ?></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.Create'); ?></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.Store'); ?></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.Edit'); ?></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.Update'); ?></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.Sort'); ?></th>
+                <th><?php echo \Illuminate\Support\Facades\Lang::get('global.Delete'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach(Config::get('modules') as $module): ?>
+            <tr>
+                <td><?php echo $module; ?>
+
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.index]">
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.show]">
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.create]">
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.store]">
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.edit]">
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.update]">
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.sort]">
+                    <input type="hidden" value="0" name="permissions[<?php echo strtolower($module); ?>.destroy]">
+                </td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.index']) && $permissions[strtolower($module).'.index']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.index]"></td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.show']) && $permissions[strtolower($module).'.show']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.show]"></td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.create']) && $permissions[strtolower($module).'.create']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.create]"></td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.store']) && $permissions[strtolower($module).'.store']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.store]"></td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.edit']) && $permissions[strtolower($module).'.edit']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.edit]"></td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.update']) && $permissions[strtolower($module).'.update']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.update]"></td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.sort']) && $permissions[strtolower($module).'.sort']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.sort]"></td>
+                <td><input type="checkbox" value="1" <?php if(isset($permissions[strtolower($module).'.destroy']) && $permissions[strtolower($module).'.destroy']): ?>checked="checked"<?php endif; ?> name="permissions[<?php echo strtolower($module); ?>.destroy]"></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

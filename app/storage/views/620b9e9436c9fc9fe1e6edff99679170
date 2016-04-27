@@ -1,0 +1,10 @@
+
+<?php $__env->startSection('main'); ?>
+
+    <article>
+        <h2><?php echo $model->title; ?></h2>
+        <p class="summary"><?php echo nl2br($model->summary); ?></p>
+        <div><?php echo $model->body; ?></div>
+    </article>
+
+<?php $__env->stopSection(); ?>

@@ -1,0 +1,17 @@
+        <div class="clearfix well media <?php if($errors->has($field)): ?>has-error <?php endif; ?>">
+            <?php if($model->$field): ?>
+                <?php echo $model->present()->icon(2, $field); ?>
+
+            <?php endif; ?>
+            <div>
+                <?php echo Form::label($field, trans('validation.attributes.' . $field), array('class' => 'control-label')); ?>
+
+                <?php echo Form::file($field); ?>
+
+                <span class="help-block">
+                    <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.max :size MB', array('size' => 2)); ?>
+                </span>
+                <?php echo $errors->first($field, '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>

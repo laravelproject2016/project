@@ -1,0 +1,55 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('otherSideLink'); ?>
+    <?php echo $__env->make('admin._navbar-public-link', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('id');; ?>
+
+
+<?php echo $__env->make('admin._image-fieldset', ['field' => 'image'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo $__env->make('admin._tabs-lang', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="tab-content">
+
+    <?php foreach($locales as $lang): ?>
+
+    <div class="tab-pane fade <?php if($locale == $lang): ?>in active <?php endif; ?>" id="<?php echo $lang; ?>">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <?php echo Form::label($lang.'[title]', trans('validation.attributes.title')); ?>
+
+                <?php echo Form::text($lang.'[title]', $model->translate($lang)->title, array('class' => 'form-control')); ?>
+
+            </div>
+            <div class="col-md-6 form-group <?php if($errors->has($lang.'.slug')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label($lang.'[slug]', trans('validation.attributes.slug')); ?>
+
+                <div class="input-group">
+                    <?php echo Form::text($lang.'[slug]', $model->translate($lang)->slug, array('class' => 'form-control')); ?>
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-slug <?php if($errors->has($lang.'.slug')): ?>btn-danger <?php endif; ?>" type="button"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.generate'); ?></button>
+                    </span>
+                </div>
+                <?php echo $errors->first($lang.'.slug', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+        <div class="checkbox">
+            <label>
+                <?php echo Form::checkbox($lang.'[status]', 1, $model->translate($lang)->status); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.online'); ?>
+            </label>
+        </div>
+    </div>
+
+    <?php endforeach; ?>
+
+</div>

@@ -1,0 +1,1 @@
+<a href="<?php echo route('admin.' . $table . '.index'); ?>" title="<?php echo trans($table . '::global.Back'); ?>"><span class="text-muted fa fa-arrow-circle-left"></span><span class="sr-only"><?php echo trans($table . '::global.Back'); ?></span></a>

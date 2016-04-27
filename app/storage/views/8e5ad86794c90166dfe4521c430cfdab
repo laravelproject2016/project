@@ -1,0 +1,13 @@
+<?php $__env->startSection('main'); ?>
+
+    <?php echo $__env->make('galleries.public._slider', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <article>
+        <h2><?php echo $model->title; ?></h2>
+        <p class="lead summary"><?php echo nl2br($model->summary); ?></p>
+        <div><?php echo $model->body; ?></div>
+    </article>
+
+    <?php echo $__env->make('galleries.public._thumbs', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>

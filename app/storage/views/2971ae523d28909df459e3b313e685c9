@@ -1,0 +1,14 @@
+<?php $__env->startSection('main'); ?>
+
+    <h1>
+        <?php echo $__env->make('admin._button-back', ['table' => $model->getTable()], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo \Illuminate\Support\Facades\Lang::get($model->getTable() . '::global.New'); ?>
+    </h1>
+
+    <?php echo Form::open( array( 'route' => array('admin.' . $model->getTable() . '.index'), 'files' => true, 'method' => 'post', 'role' => 'form' ) ); ?>
+
+        <?php echo $__env->make($model->getTable() . '.admin._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>

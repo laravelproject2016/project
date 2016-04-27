@@ -1,0 +1,26 @@
+<?php $__env->startSection('page'); ?>
+
+    <div class="row">
+
+        <div class="col-sm-4">
+            <?php if($children): ?>
+            <ul class="nav nav-subpages">
+                <?php foreach($children as $child): ?>
+                <?php echo $__env->make('pages.public._listItem', array('child' => $child), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+
+
+        <div class="col-sm-8">
+            <?php echo $model->body; ?>
+
+            <?php echo $__env->make('galleries.public._galleries', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('pages.public.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

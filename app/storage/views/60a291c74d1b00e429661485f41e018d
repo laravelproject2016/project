@@ -1,0 +1,25 @@
+<div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas" id="sidebar" role="navigation">
+    <?php foreach($menus as $section => $items): ?>
+    <?php if($items->count()): ?>
+    <div class="sidebar-panel">
+        <?php if($section): ?>
+        <a class="sidebar-title <?php if(Config::get('current_user.menus_'.$section.'_collapsed')): ?>collapsed <?php endif; ?>" href="#<?php echo $section; ?>" data-toggle="collapse">
+            <div> <?php echo \Illuminate\Support\Facades\Lang::get('global.menus.' . $section); ?></div>
+        </a>
+        <?php endif; ?>
+        <div class="panel-collapse collapse <?php if(! Config::get('current_user.menus_'.$section.'_collapsed')): ?>in <?php endif; ?>" id="<?php echo $section; ?>">
+            <ul class="nav nav-sidebar">
+                <?php foreach($items->sortBy('weight') as $name => $item): ?>
+                <li class="<?php echo Request::is($item['request']) ? 'active' : ''; ?>">
+                    <a href="<?php echo URL::route($item['route']); ?>">
+                        <span class="<?php echo $item['icon-class']; ?>"></span>
+                        <div> <?php echo \Patchwork\Utf8::ucfirst(trans($name . '::global.name')); ?></div>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+</div>

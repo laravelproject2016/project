@@ -1,0 +1,124 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script('js/admin/checkboxes-permissions.js'); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('activated'); ?>
+
+<?php echo Form::hidden('id'); ?>
+
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <div class="form-group <?php if($errors->has('email')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label('email', trans('validation.attributes.email'), array('class' => 'control-label')); ?>
+
+                    <?php echo Form::email('email', null, array('class' => 'form-control', 'autocomplete' => 'off')); ?>
+
+                    <?php echo $errors->first('email', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group <?php if($errors->has('password')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label('password', trans('validation.attributes.password'), array('class' => 'control-label')); ?>
+
+                    <?php echo Form::password('password', array('class' => 'form-control', 'autocomplete' => 'off')); ?>
+
+                    <?php echo $errors->first('password', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+                <div class="form-group <?php if($errors->has('password_confirmation')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), array('class' => 'control-label')); ?>
+
+                    <?php echo Form::password('password_confirmation', array('class' => 'form-control', 'autocomplete' => 'off')); ?>
+
+                    <?php echo $errors->first('password_confirmation', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                <div class="form-group <?php if($errors->has('first_name')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label('first_name', trans('validation.attributes.first_name'), array('class' => 'control-label')); ?>
+
+                    <?php echo Form::text('first_name', null, array('class' => 'form-control'));; ?>
+
+                    <?php echo $errors->first('first_name', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class="form-group <?php if($errors->has('last_name')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label('last_name', trans('validation.attributes.last_name'), array('class' => 'control-label')); ?>
+
+                    <?php echo Form::text('last_name', null, array('class' => 'form-control'));; ?>
+
+                    <?php echo $errors->first('last_name', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <?php echo Form::hidden('activated', 0); ?>
+
+                <?php echo Form::checkbox('activated', 1, isset($user) && $user->isActivated()); ?> Activé
+            </label>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                <div class="form-group">
+                <label><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.groups'); ?></label>
+                <?php foreach($groups as $group): ?>
+                <div class="checkbox">
+                    <label>
+                        <?php echo Form::hidden('groups[' . $group->id . ']', 0); ?>
+
+                        <?php echo Form::checkbox('groups[' . $group->id . ']', 1, isset($selectedGroups[$group->id])); ?> <?php echo $group->name; ?>
+
+                    </label>
+                </div>
+                <?php endforeach; ?>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<label><?php echo \Illuminate\Support\Facades\Lang::get('users::global.User permissions'); ?></label>
+<div class="checkbox">
+    <label>
+        <?php echo Form::hidden('permissions[superuser]', 0); ?>
+
+        <?php echo Form::checkbox('permissions[superuser]', 1, isset($permissions['superuser']) && $permissions['superuser']); ?> Superuser ?
+    </label>
+</div>
+<?php echo $__env->make('admin._permissions-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

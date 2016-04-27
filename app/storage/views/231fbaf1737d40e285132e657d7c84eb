@@ -1,0 +1,115 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('otherSideLink'); ?>
+    <?php echo $__env->make('admin._navbar-public-link', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('id'); ?>
+
+
+<?php echo $__env->make('admin._image-fieldset', ['field' => 'image'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#tab-main" data-target="#tab-main" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Content'); ?></a>
+    </li>
+    <li>
+        <a href="#tab-galleries" data-target="#tab-galleries" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Galleries'); ?></a>
+    </li>
+</ul>
+
+<div class="tab-content">
+
+    <?php /* Main tab */ ?>
+    <div class="tab-pane fade in active" id="tab-main">
+
+        <div class="row">
+            <div class="col-sm-6 form-group <?php if($errors->has('date')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('date', trans('validation.attributes.date'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('date', $model->present()->dateOrNow(), array('class' => 'datepicker form-control', 'data-value' => $model->present()->dateOrNow(), 'placeholder' => trans('validation.attributes.DDMMYYYY'))); ?>
+
+                <?php echo $errors->first('date', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+            <div class="col-sm-3 form-group <?php if($errors->has('time')): ?>has-error <?php endif; ?>">
+                <?php echo Form::label('time', trans('validation.attributes.time'), array('class' => 'control-label')); ?>
+
+                <?php echo Form::text('time', $model->present()->timeOrNow(), array('class' => 'form-control', 'placeholder' => trans('validation.attributes.HH:MM'))); ?>
+
+                <?php echo $errors->first('time', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+
+
+        <?php echo $__env->make('admin._tabs-lang-form', ['target' => 'content'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="tab-content">
+
+        <?php foreach($locales as $lang): ?>
+
+            <div class="tab-pane fade <?php if($locale == $lang): ?>in active <?php endif; ?>" id="content-<?php echo $lang; ?>">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <?php echo Form::label($lang.'[title]', trans('validation.attributes.title')); ?>
+
+                        <?php echo Form::text($lang.'[title]', $model->translate($lang)->title, array('class' => 'form-control')); ?>
+
+                    </div>
+                    <div class="col-md-6 form-group <?php if($errors->has($lang.'.slug')): ?>has-error <?php endif; ?>">
+                        <?php echo Form::label($lang.'[slug]', trans('validation.attributes.slug'), array('class' => 'control-label')); ?>
+
+                        <div class="input-group">
+                            <?php echo Form::text($lang.'[slug]', $model->translate($lang)->slug, array('class' => 'form-control')); ?>
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-slug <?php if($errors->has($lang.'.slug')): ?>btn-danger <?php endif; ?>" type="button"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.generate'); ?></button>
+                            </span>
+                        </div>
+                        <?php echo $errors->first($lang.'.slug', '<p class="help-block">:message</p>'); ?>
+
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <?php echo Form::checkbox($lang.'[status]', 1, $model->translate($lang)->status); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.online'); ?>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[summary]', trans('validation.attributes.summary')); ?>
+
+                    <?php echo Form::textarea($lang.'[summary]', $model->translate($lang)->summary, array('class' => 'form-control', 'rows' => 4)); ?>
+
+                </div>
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[body]', trans('validation.attributes.body')); ?>
+
+                    <?php echo Form::textarea($lang.'[body]', $model->translate($lang)->body, array('class' => 'editor form-control')); ?>
+
+                </div>
+            </div>
+
+        <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+    <?php /* Galleries tab */ ?>
+    <div class="tab-pane fade in" id="tab-galleries">
+
+        <?php echo $__env->make('admin._galleries-fieldset', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    </div>
+
+</div>
+

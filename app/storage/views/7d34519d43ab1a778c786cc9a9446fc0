@@ -1,0 +1,13 @@
+<li id="page_<?php echo $child->id; ?>" class="<?php echo Request::is($child->uri) ? 'active' : ''; ?>">
+    <a href="/<?php echo $child->uri; ?>">
+        <?php echo $child->title; ?>
+
+    </a>
+    <?php if($child->items): ?>
+        <ul>
+            <?php foreach($child->items as $childPage): ?>
+                <?php echo $__env->make('pages.public._listItem', array('child' => $childPage), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</li>

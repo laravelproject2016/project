@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="<?php echo Config::get('app.locale'); ?>">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><?php echo $title; ?></title>
+
+    <?php echo HTML::style(asset('css/public.css')); ?>
+
+
+    <?php echo $__env->yieldContent('css'); ?>
+
+    <?php if(Config::get('typicms.typekitCode')): ?>
+    <script type="text/javascript" src="//use.typekit.net/<?php echo Config::get('typicms.typekitCode'); ?>.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <?php endif; ?>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="<?php $__env->startSection('bodyClass'); ?><?php echo $bodyClass; ?><?php echo $__env->yieldSection(); ?>">
+
+    <a href="#content" class="sr-only"><?php echo \Illuminate\Support\Facades\Lang::get('db.Skip to content'); ?></a>
+
+<?php if(Sentry::getUser() and Sentry::getUser()->hasAccess('admin') and ! Input::get('preview')): ?>
+    <?php echo $__env->make('_navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php endif; ?>
+
+    <div class="container" id="content">
+
+        <?php $__env->startSection('header'); ?>
+        <header>
+            <h1>
+                <a href="<?php echo TypiCMS::homepage(); ?>"><?php echo Config::get('typicms.' . $lang . '.websiteTitle'); ?></a>
+            </h1>
+        </header>
+        <?php echo $__env->yieldSection(); ?>
+
+        <?php $__env->startSection('languagesMenu'); ?>
+        <nav role="navigation">
+            <?php echo TypiCMS::languagesMenu(array('class' => 'nav nav-pills pull-right')); ?>
+
+        </nav>
+        <?php echo $__env->yieldSection(); ?>
+
+        <?php $__env->startSection('mainMenu'); ?>
+        <nav role="navigation">
+            <?php echo Menus::build('main'); ?>
+
+        </nav>
+        <?php echo $__env->yieldSection(); ?>
+
+        <?php echo $__env->make('public._alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <?php echo $__env->yieldContent('main'); ?>
+
+        <div class="partners">
+            <?php if($partners = Partners::getAllBy('homepage', 1) and $partners->count()): ?>
+            <h3>
+                <a href="<?php echo route($lang . '.partners'); ?>"><?php echo \Illuminate\Support\Facades\Lang::get('db.Partners'); ?></a>
+            </h3>
+            <ul class="list-unstyled">
+                <?php foreach($partners as $partner): ?>
+                <li>
+                    <a href="<?php echo $partner->website; ?>" title="<?php echo $partner->title; ?>" target="_blank">
+                        <?php echo $partner->present()->thumb(null, 50); ?>
+
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+
+        <?php $__env->startSection('footer'); ?>
+        <div class="row">
+
+            <div class="col-sm-4">
+                <?php echo Menus::build('social'); ?>
+
+            </div>
+
+            <nav class="col-sm-8" role="navigation">
+                <?php echo Menus::build('footer'); ?>
+
+            </nav>
+
+        </div>
+        <?php echo $__env->yieldSection(); ?>
+
+    </div>
+
+    <?php if(App::environment('production') and Config::get('typicms.googleAnalyticsCode')): ?>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '<?php echo Config::get('typicms.googleAnalyticsCode'); ?>', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <?php endif; ?>
+
+    <?php echo HTML::script(asset('js/public/components.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/public/master.js')); ?>
+
+    <?php if(Input::get('preview')): ?>
+    <?php echo HTML::script(asset('js/public/previewmode.js')); ?>
+
+    <?php endif; ?>
+    
+    <?php echo $__env->yieldContent('js'); ?>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+        <?php if(count($locales) > 1): ?>
+        <div class="clearfix">
+            <div class="btn-group pull-right" id="btn-group-form-locales">
+                <?php foreach($locales as $locale): ?>
+                    <?php echo Html::langButton($locale, array('data-target' => '#' . $target .'-'. $locale, 'data-toggle' => 'tab')); ?>
+
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>

@@ -1,0 +1,10 @@
+    <?php /* Ce template n'est pas utilisé pour le moment */ ?>
+    <nav role="navigation" class="menu menu-languages">
+        <ul class="nav nav-pills">
+            <?php foreach($languagesMenu as $item): ?>
+                <li class="<?php echo $item->class; ?>">
+                    <a href="/<?php echo $item->lang; ?>"><?php echo $item->lang; ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </nav>

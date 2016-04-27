@@ -1,0 +1,76 @@
+<?php $__env->startSection('page-header'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('sidebar'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('mainClass'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
+
+<div id="register" class="container-register container-xs-center">
+
+    <?php echo Form::open(array('role' => 'form')); ?>
+
+
+        <h1><?php echo \Illuminate\Support\Facades\Lang::get('users::global.Register'); ?></h1>
+
+        <div class="form-group <?php if($errors->has('email')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('email', trans('validation.attributes.email'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::email('email', null, array('class' => 'form-control input-lg', 'autofocus', 'required' => 'required')); ?>
+
+            <?php if($errors->has('email')): ?>
+            <span class="help-block"><?php echo $errors->first('email'); ?></span>
+            <?php endif; ?>
+        </div>
+
+        <div class="form-group <?php if($errors->has('first_name')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('first_name', trans('validation.attributes.first_name'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('first_name', null, array('class' => 'form-control input-lg', 'required' => 'required')); ?>
+
+            <?php if($errors->has('first_name')): ?>
+            <span class="help-block"><?php echo $errors->first('first_name'); ?></span>
+            <?php endif; ?>
+        </div>
+
+        <div class="form-group <?php if($errors->has('last_name')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('last_name', trans('validation.attributes.last_name'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('last_name', null, array('class' => 'form-control input-lg', 'required' => 'required')); ?>
+
+            <?php if($errors->has('last_name')): ?>
+            <span class="help-block"><?php echo $errors->first('last_name'); ?></span>
+            <?php endif; ?>
+        </div>
+
+        <div class="form-group <?php if($errors->has('password')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('password', trans('validation.attributes.password'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::password('password', array('class' => 'form-control input-lg', 'autocomplete' => 'off')); ?>
+
+            <?php if($errors->has('password')): ?>
+            <span class="help-block"><?php echo $errors->first('password'); ?></span>
+            <?php endif; ?>
+        </div>
+        <div class="form-group <?php if($errors->has('password_confirmation')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::password('password_confirmation', array('class' => 'form-control input-lg', 'autocomplete' => 'off')); ?>
+
+            <?php if($errors->has('password_confirmation')): ?>
+            <span class="help-block"><?php echo $errors->first('password_confirmation'); ?></span>
+            <?php endif; ?>
+        </div>
+
+        <div class="form-group form-action">
+            <?php echo Form::button(trans('validation.attributes.register'), array('class' => 'btn btn-lg btn-primary btn-block', 'type' => 'submit')); ?>
+
+        </div>
+
+    <?php echo Form::close(); ?>
+
+
+</div>
+
+<?php $__env->stopSection(); ?>

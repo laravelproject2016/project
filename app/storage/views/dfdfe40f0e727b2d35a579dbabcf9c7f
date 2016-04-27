@@ -1,0 +1,14 @@
+
+<?php $__env->startSection('main'); ?>
+
+    <article>
+        <h2><?php echo $model->title; ?></h2>
+        <div class="date"><?php echo $model->present()->dateFromTo; ?> <br><?php echo $model->present()->timeFromTo; ?></div>
+        <p class="summary"><?php echo nl2br($model->summary); ?></p>
+        <a class="btn btn-default btn-xs" href="<?php echo route($lang.'.events.slug.ics', $model->slug); ?>">
+            <span class="fa fa-calendar"></span> <?php echo \Illuminate\Support\Facades\Lang::get('db.Add to calendar'); ?>
+        </a>
+        <div><?php echo $model->body; ?></div>
+    </article>
+
+<?php $__env->stopSection(); ?>

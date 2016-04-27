@@ -1,0 +1,35 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('id');; ?>
+
+
+<div class="row">
+    <div class="col-md-6 form-group <?php if($errors->has('tag')): ?>has-error <?php endif; ?>">
+        <?php echo Form::label('tag', trans('validation.attributes.tag'), array('class' => 'control-label')); ?>
+
+        <?php echo Form::text('tag', null, array('class' => 'form-control')); ?>
+
+        <?php echo $errors->first('tag', '<p class="help-block">:message</p>'); ?>
+
+    </div>
+    <div class="col-md-6 form-group <?php if($errors->has('slug')): ?>has-error <?php endif; ?>">
+        <?php echo Form::label('slug', trans('validation.attributes.slug'), array('class' => 'control-label')); ?>
+
+        <div class="input-group">
+            <?php echo Form::text('slug', null, array('class' => 'form-control')); ?>
+
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-slug <?php if($errors->has('slug')): ?>btn-danger <?php endif; ?>" type="button"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.generate'); ?></button>
+            </span>
+        </div>
+        <?php echo $errors->first('slug', '<p class="help-block">:message</p>'); ?>
+
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<?php $__env->startSection('page-header'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('sidebar'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('mainClass'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
+
+<div id="login" class="container-newpassword container-xs-center">
+
+    <?php echo Form::open(array('role' => 'form', 'method' => 'post')); ?>
+
+
+    <h1><?php echo \Illuminate\Support\Facades\Lang::get('users::global.New password'); ?></h1>
+
+    <div class="form-group <?php if($errors->has('password')): ?>has-error <?php endif; ?>">
+        <?php echo Form::label('password', trans('validation.attributes.password'), array('class' => 'control-label')); ?>
+
+        <?php echo Form::password('password', array('class' => 'input-lg form-control', 'autofocus', 'autocomplete' => 'off')); ?>
+
+        <?php if($errors->has('password')): ?>
+        <span class="help-block"><?php echo $errors->first('password'); ?></span>
+        <?php endif; ?>
+    </div>
+
+    <div class="form-group <?php if($errors->has('password_confirmation')): ?>has-error <?php endif; ?>">
+        <?php echo Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), array('class' => 'control-label')); ?>
+
+        <?php echo Form::password('password_confirmation', array('class' => 'input-lg form-control', 'autocomplete' => 'off')); ?>
+
+        <?php if($errors->has('password_confirmation')): ?>
+        <span class="help-block"><?php echo $errors->first('password_confirmation'); ?></span>
+        <?php endif; ?>
+    </div>
+
+    <?php echo Form::hidden('resetCode', $resetCode); ?>
+
+    <?php echo Form::hidden('id', $id); ?>
+
+
+    <div class="form-group form-action">
+        <?php echo Form::button(trans('validation.attributes.modify'), array('class' => 'btn btn-lg btn-primary btn-block', 'type' => 'submit')); ?>
+
+    </div>
+
+    <?php echo Form::close(); ?>
+
+
+</div>
+
+<?php $__env->stopSection(); ?>

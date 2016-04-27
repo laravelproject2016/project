@@ -1,0 +1,15 @@
+<?php $__env->startSection('main'); ?>
+
+    <h1>
+        <?php echo $__env->make('admin._button-back', ['table' => $model->getTable()], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $model->present()->title; ?>
+
+    </h1>
+
+    <?php echo Form::model( $model, array( 'route' => array('admin.' . $model->getTable() . '.update', $model->id), 'files' => true, 'method' => 'put', 'role' => 'form' ) ); ?>
+
+        <?php echo $__env->make($model->getTable() . '.admin._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>

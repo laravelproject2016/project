@@ -1,0 +1,9 @@
+        <?php if(count($locales) > 1): ?>
+        <ul class="nav nav-tabs">
+            <?php foreach($locales as $lang): ?>
+            <li class="<?php if($locale == $lang): ?>active <?php endif; ?>">
+                <a href="#<?php echo $lang; ?>" data-target="#<?php echo $lang; ?>" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.languages.'.$lang); ?></a>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>

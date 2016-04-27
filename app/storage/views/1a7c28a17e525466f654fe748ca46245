@@ -1,0 +1,14 @@
+<?php if($model->files->count()): ?>
+    <div class="row">
+    <?php foreach($model->files as $image): ?>
+        <div class="col-xs-4 col-sm-3 col-md-2">
+            <div class="thumbnail">
+                <a class="fancybox" href="<?php echo asset($image->path . '/' . $image->filename); ?>" data-fancybox-group="<?php echo $model->slug; ?>">
+                    <?php echo $image->present()->thumb(200, 200, array(), 'filename'); ?>
+
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    </div>
+<?php endif; ?>

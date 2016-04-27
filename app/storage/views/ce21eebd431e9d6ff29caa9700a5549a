@@ -1,0 +1,22 @@
+<?php $__env->startSection('main'); ?>
+
+    <h2><?php echo Str::title(trans_choice('news::global.news', $models->getTotal())); ?></h2>
+
+    <?php if($models->count()): ?>
+    <ul>
+        <?php foreach($models as $model): ?>
+        <li>
+            <strong><?php echo $model->title; ?></strong>
+            <div class="date"><?php echo \Illuminate\Support\Facades\Lang::get('news::global.Published on'); ?> 
+                <time datetime="<?php echo $model->date; ?>"><?php echo $model->present()->dateLocalized; ?></time>
+            </div>
+            <a href="<?php echo route($lang.'.news.slug', $model->slug); ?>"><?php echo \Illuminate\Support\Facades\Lang::get('db.More'); ?></a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+
+    <?php echo $models->appends(Input::except('page'))->links(); ?>
+
+
+<?php $__env->stopSection(); ?>

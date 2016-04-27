@@ -1,0 +1,23 @@
+<?php $__env->startSection('css'); ?>
+    <?php if($model->css): ?>
+    <style type="text/css">
+        <?php echo $model->css; ?>
+
+    </style>
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('js'); ?>
+    <?php if($model->js): ?>
+    <script>
+        <?php echo $model->js; ?>
+
+    </script>
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
+
+    <?php echo $__env->yieldContent('page'); ?>
+
+<?php $__env->stopSection(); ?>

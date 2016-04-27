@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="<?php echo App::getLocale(); ?>">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2><?php echo trans('users::global.Welcome'); ?> <?php echo $firstName; ?> <?php echo $lastName; ?></h2>
+
+        <p><b><?php echo trans('users::global.Account:'); ?></b> <?php echo e($email); ?></p>
+        <p><?php echo trans('users::global.To activate your account'); ?>, <a href="<?php echo URL::route('activate', array($userId, urlencode($activationCode))); ?>"><?php echo trans('users::global.click here'); ?>.</a></p>
+        <p><?php echo trans('users::global.Or point your browser to this address:'); ?> <br /> <?php echo URL::route('activate', array($userId, urlencode($activationCode))); ?></p>
+        <p><?php echo trans('users::global.Thank you'); ?></p>
+    </body>
+</html>

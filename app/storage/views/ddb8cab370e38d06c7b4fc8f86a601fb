@@ -1,0 +1,15 @@
+
+<?php $__env->startSection('main'); ?>
+
+    <article>
+        <h2><?php echo $model->title; ?></h2>
+        <div class="date"><?php echo \Illuminate\Support\Facades\Lang::get('news::global.Published on'); ?> 
+            <time datetime="<?php echo $model->date; ?>" pubdate><?php echo $model->present()->dateLocalized; ?></time>
+        </div>
+        <p class="summary"><?php echo nl2br($model->summary); ?></p>
+        <div class="body"><?php echo $model->body; ?></div>
+    </article>
+
+    <?php echo $__env->make('galleries.public._galleries', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>

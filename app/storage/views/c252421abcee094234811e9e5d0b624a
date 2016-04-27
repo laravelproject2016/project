@@ -1,0 +1,13 @@
+<?php $__env->startSection('main'); ?>
+
+    <article class="http-error-message">
+        <h1><?php echo \Illuminate\Support\Facades\Lang::get('db.Error :code', ['code' => '403']); ?></h1>
+        <p>
+            <?php echo \Illuminate\Support\Facades\Lang::get('db.Sorry, you are not authorized to view this page'); ?>.<br>
+            <?php echo \Illuminate\Support\Facades\Lang::get('db.Go to our homepage?', ['a_open' => '<a href="/">', 'a_close' => '</a>']); ?>
+        </p>
+    </article>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('public.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,24 @@
+<?php $__env->startSection('bodyClass'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('navbar'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('sidebar'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('mainClass'); ?>
+col-xs-12
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('breadcrumbs'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('h1'); ?>
+    <span id="nb_elements"><?php echo $models->getTotal(); ?></span> <?php echo \Illuminate\Support\Facades\Lang::choice('files::global.files', $models->getTotal()); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('titleLeftButton'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
+
+    <?php echo $__env->make('files.admin.thumbnails', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>

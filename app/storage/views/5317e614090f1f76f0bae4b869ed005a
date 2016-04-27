@@ -1,0 +1,35 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('id');; ?>
+
+<?php echo Form::hidden('group', 'db');; ?>
+
+
+<div class="form-group <?php if($errors->has('key')): ?>has-error <?php endif; ?>">
+    <?php echo Form::label('key', trans('validation.attributes.key'), array('class' => 'control-label')); ?>
+
+    <?php echo Form::text('key', null, array('class' => 'form-control')); ?>
+
+    <?php echo $errors->first('key', '<p class="help-block">:message</p>'); ?>
+
+</div>
+
+<?php echo Form::label('translations', trans('validation.attributes.translations'), array('class' => 'control-label')); ?>
+
+<?php foreach($locales as $lang): ?>
+    <div class="form-group <?php if($errors->has($lang.'.translation')): ?>has-error <?php endif; ?>">
+        <div class="input-group">
+            <span class="input-group-addon"><?php echo strtoupper($lang); ?></span>
+            <?php echo Form::text($lang.'[translation]', $model->translate($lang)->translation, array('class' => 'form-control')); ?>
+
+        </div>
+        <?php echo $errors->first($lang.'.translation', '<p class="help-block">:message</p>'); ?>
+
+    </div>
+<?php endforeach; ?>

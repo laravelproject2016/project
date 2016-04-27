@@ -1,0 +1,46 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//maps.googleapis.com/maps/api/js?sensor=false&amp;language='.Config::get('app.locale'))); ?>
+
+    <?php echo HTML::script(asset('js/public/gmaps.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main'); ?>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <h3><?php echo $model->title; ?></h3>
+
+            <?php if($model->logo): ?>
+                <p><img src="<?php echo Croppa::url('/uploads/places/'.$model->logo, 0, 200); ?>" alt=""></p>
+            <?php endif; ?>
+
+            <p>
+                <?php if($model->address): ?>
+                    <?php echo $model->address; ?><br>
+                <?php endif; ?>
+                <?php if($model->phone): ?>
+                    <?php echo $model->phone; ?><br>
+                <?php endif; ?>
+                <?php if($model->email): ?>
+                    <a href="mailto:<?php echo $model->email; ?>"><?php echo $model->email; ?></a><br>
+                <?php endif; ?>
+                <?php if($model->website): ?>
+                    <a href="<?php echo $model->website; ?>"><?php echo $model->website; ?></a><br>
+                <?php endif; ?>
+            </p>
+            <p>
+                <?php if($model->info): ?>
+                    <?php echo nl2br($model->info); ?>
+
+                <?php endif; ?>
+            </p>
+        </div>
+        <div class="col-sm-8">
+            <?php if($model->latitude && $model->longitude): ?>
+                <div id="map" class="map map-fancybox"></div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>

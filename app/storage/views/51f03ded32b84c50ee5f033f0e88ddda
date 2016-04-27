@@ -1,0 +1,30 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script('js/admin/checkboxes-permissions.js'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo Form::hidden('id'); ?>
+
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+        <div class=" form-group <?php if($errors->has('name')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('name', trans('validation.attributes.name'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('name', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('name', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+    </div>
+
+</div>
+
+<label><?php echo \Illuminate\Support\Facades\Lang::get('groups::global.Group permissions'); ?></label>
+<?php echo $__env->make('admin._permissions-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

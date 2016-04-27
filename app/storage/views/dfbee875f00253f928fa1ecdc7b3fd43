@@ -1,0 +1,21 @@
+<?php $__env->startSection('main'); ?>
+
+    <h2><?php echo Str::title(trans_choice('partners::global.partners', 2)); ?></h2>
+
+    <div class="row partners">
+        <?php foreach($partners as $partner): ?>
+        <div class="col-xs-4 col-sm-3 col-md-2">
+            <a href="<?php echo route($lang.'.partners.slug', $partner->slug); ?>" class="thumbnail">
+                <div class="img-container">
+                    <?php echo $partner->present()->thumb(null, 200); ?>
+
+                </div>
+                <div class="caption">
+                    <p><small><?php echo $partner->title; ?></small></p>
+                </div>
+            </a>
+        </div>
+        <?php endforeach; ?>
+    </div>
+
+<?php $__env->stopSection(); ?>

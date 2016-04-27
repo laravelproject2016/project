@@ -1,0 +1,122 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('titleLeftButton'); ?>
+    <a href="<?php echo route('admin.menus.edit', $menu->id); ?>" title="<?php echo trans('menulinks::global.Back'); ?>">
+        <span class="text-muted fa fa-arrow-circle-left"></span><span class="sr-only"><?php echo trans('menulinks::global.Back'); ?></span>
+    </a>
+<?php $__env->stopSection(); ?>
+
+<div class="form-group">
+    <button class="btn btn-primary" value="true" id="exit" name="exit" type="submit"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.save and exit'); ?></button>
+    <button class="btn btn-default" type="submit"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.save'); ?></button>
+</div>
+
+<div class="row">
+
+    <?php echo Form::hidden('id');; ?>
+
+    <?php echo Form::hidden('menu_id', $menu->id); ?>
+
+    <?php echo Form::hidden('position', $model->position ? : 0); ?>
+
+    <?php echo Form::hidden('parent_id'); ?>
+
+
+    <div class="col-sm-6">
+
+        <?php echo $__env->make('admin._tabs-lang', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="tab-content">
+
+            <?php foreach($locales as $lang): ?>
+
+            <div class="tab-pane fade <?php if($locale == $lang): ?>in active <?php endif; ?>" id="<?php echo $lang; ?>">
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[title]', trans('validation.attributes.title')); ?>
+
+                    <?php echo Form::text($lang.'[title]', $model->translate($lang)->title, array('class' => 'form-control')); ?>
+
+                </div>
+                <div class="form-group <?php if($errors->has($lang.'.uri')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label($lang.'[uri]', trans('validation.attributes.uri')); ?>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">/</span>
+                        <?php echo Form::text($lang.'[uri]', $model->translate($lang)->uri, array('class' => 'form-control')); ?>
+
+                    </div>
+                    <?php echo $errors->first($lang.'.uri', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+                <div class="form-group <?php if($errors->has($lang.'.url')): ?>has-error <?php endif; ?>">
+                    <?php echo Form::label($lang.'[url]', trans('validation.attributes.website')); ?>
+
+                    <?php echo Form::text($lang.'[url]', $model->translate($lang)->url, array('class' => 'form-control', 'placeholder' => 'http://')); ?>
+
+                    <?php echo $errors->first($lang.'.url', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <?php echo Form::checkbox($lang.'[status]', 1, $model->translate($lang)->status); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.online'); ?>
+                    </label>
+                </div>
+            </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <div class="form-group">
+            <?php echo Form::label('page_id', trans('validation.attributes.page_id')); ?>
+
+            <?php echo Form::select('page_id', $selectPages, null, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('module_name', trans('validation.attributes.module_name')); ?>
+
+            <?php echo Form::select('module_name', $selectModules, null, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <?php echo Form::checkbox('has_categories'); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.has_categories'); ?>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('target', trans('validation.attributes.target')); ?>
+
+            <?php echo Form::select('target', array('' => trans('validation.values.Active tab'), '_blank' => trans('validation.values.New tab')), null, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('class', trans('validation.attributes.class')); ?>
+
+            <?php echo Form::text('class', $model->translate($lang)->class, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('icon_class', trans('validation.attributes.icon_class')); ?>
+
+            <?php echo Form::text('icon_class', $model->translate($lang)->icon_class, array('class' => 'form-control')); ?>
+
+        </div>
+
+    </div>
+
+</div>

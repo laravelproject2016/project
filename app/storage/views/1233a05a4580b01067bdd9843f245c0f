@@ -1,0 +1,19 @@
+<?php $__env->startSection('main'); ?>
+
+    <h2><?php echo Str::title(trans_choice('projects::global.projects', 2)); ?></h2>
+
+    <?php if($models->count()): ?>
+
+    <ul>
+        <?php foreach($models as $model): ?>
+        <li>
+            <strong><?php echo $model->title; ?></strong>
+            <br>
+            <a href="<?php echo route($lang.'.projects.categories.slug', array($model->category->slug, $model->slug)); ?>"><?php echo \Illuminate\Support\Facades\Lang::get('db.More'); ?></a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <?php endif; ?>
+
+<?php $__env->stopSection(); ?>

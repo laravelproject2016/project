@@ -1,0 +1,16 @@
+<?php $__env->startSection('main'); ?>
+
+    <h1>
+        <a href="<?php echo route('admin.menus.edit', $menu->id); ?>" title="<?php echo trans('menulinks::global.Back'); ?>">
+            <span class="text-muted fa fa-arrow-circle-left"></span><span class="sr-only"><?php echo trans('menulinks::global.Back'); ?></span>
+        </a>
+        <?php echo \Illuminate\Support\Facades\Lang::get('menulinks::global.New'); ?>
+    </h1>
+
+    <?php echo Form::open( array( 'route' => array('admin.menus.menulinks.index', $menu->id), 'files' => true, 'method' => 'post', 'role' => 'form' ) ); ?>
+
+        <?php echo $__env->make('menulinks.admin._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>

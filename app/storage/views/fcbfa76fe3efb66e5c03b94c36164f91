@@ -1,0 +1,195 @@
+<?php $__env->startSection('js'); ?>
+    <?php echo HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')); ?>
+
+    <?php echo HTML::script(asset('js/admin/form.js')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('otherSideLink'); ?>
+    <?php echo $__env->make('admin._navbar-public-link', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin._buttons-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::hidden('id'); ?>
+
+<?php echo Form::hidden('position', $model->position ? : 0); ?>
+
+<?php echo Form::hidden('parent_id'); ?>
+
+
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#tab-main" data-target="#tab-main" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Content'); ?></a>
+    </li>
+    <li>
+        <a href="#tab-files" data-target="#tab-files" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Files'); ?></a>
+    </li>
+    <li>
+        <a href="#tab-meta" data-target="#tab-meta" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Meta'); ?></a>
+    </li>
+    <li>
+        <a href="#tab-options" data-target="#tab-options" data-toggle="tab"><?php echo \Illuminate\Support\Facades\Lang::get('global.Options'); ?></a>
+    </li>
+</ul>
+
+<div class="tab-content">
+
+    <?php /* Main tab */ ?>
+    <div class="tab-pane fade in active" id="tab-main">
+
+        <?php echo $__env->make('admin._tabs-lang-form', ['target' => 'content'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="tab-content">
+
+        <?php foreach($locales as $lang): ?>
+
+            <div class="tab-pane fade in <?php if($locale == $lang): ?>active <?php endif; ?>" id="content-<?php echo $lang; ?>">
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <?php echo Form::label($lang.'[title]', trans('validation.attributes.title')); ?>
+
+                        <?php echo Form::text($lang.'[title]', $model->translate($lang)->title, array('class' => 'form-control')); ?>
+
+                    </div>
+                    <div class="col-md-6 form-group <?php if($errors->has($lang.'.slug')): ?>has-error <?php endif; ?>">
+                        <?php echo Form::label($lang.'[slug]', trans('validation.attributes.url'), array('class' => 'control-label')); ?>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><?php echo $model->present()->parentUri($lang); ?></span>
+                            <?php echo Form::text($lang.'[slug]', $model->translate($lang)->slug, array('class' => 'form-control')); ?>
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-slug <?php if($errors->has($lang.'.slug')): ?>btn-danger <?php endif; ?>" type="button"><?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.generate'); ?></button>
+                            </span>
+                        </div>
+                        <?php echo $errors->first($lang.'.slug', '<p class="help-block">:message</p>'); ?>
+
+                    </div>
+                </div>
+
+                <?php echo Form::hidden($lang.'[uri]', $model->translate($lang)->uri); ?>
+
+
+                <div class="checkbox">
+                    <label>
+                        <?php echo Form::checkbox($lang.'[status]', 1, $model->translate($lang)->status); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.online'); ?>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <?php echo Form::label($lang.'[body]', trans('validation.attributes.body'), array('class' => 'sr-only')); ?>
+
+                    <?php echo Form::textarea($lang.'[body]', $model->translate($lang)->body, array('class' => 'editor form-control')); ?>
+
+                </div>
+            
+            </div>
+            
+        <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+    <?php /* Galleries tab */ ?>
+    <div class="tab-pane fade in" id="tab-files">
+
+        <?php echo $__env->make('admin._image-fieldset', ['field' => 'image'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <?php echo $__env->make('admin._galleries-fieldset', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    </div>
+
+    <?php /* Metadata tab */ ?>
+    <div class="tab-pane fade in" id="tab-meta">
+
+        <?php echo $__env->make('admin._tabs-lang-form', ['target' => 'meta'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="tab-content">
+
+        <?php /* Headers */ ?>
+        <?php foreach($locales as $lang): ?>
+
+        <div class="tab-pane fade in <?php if($locale == $lang): ?>active <?php endif; ?>" id="meta-<?php echo $lang; ?>">
+
+            <div class="form-group">
+                <?php echo Form::label($lang.'[meta_title]', trans('validation.attributes.meta_title')); ?>
+
+                <?php echo Form::text($lang.'[meta_title]', $model->translate($lang)->meta_title, array('class' => 'form-control')); ?>
+
+            </div>
+
+            <div class="form-group">
+                <?php echo Form::label($lang.'[meta_keywords]', trans('validation.attributes.meta_keywords')); ?>
+
+                <?php echo Form::text($lang.'[meta_keywords]', $model->translate($lang)->meta_keywords, array('class' => 'form-control')); ?>
+
+            </div>
+
+            <div class="form-group">
+                <?php echo Form::label($lang.'[meta_description]', trans('validation.attributes.meta_description')); ?>
+
+                <?php echo Form::text($lang.'[meta_description]', $model->translate($lang)->meta_description, array('class' => 'form-control')); ?>
+
+            </div>
+
+        </div>
+
+        <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+    <?php /* Options */ ?>
+    <div class="tab-pane fade in" id="tab-options">
+
+        <div class="checkbox">
+            <?php if($model->is_home): ?>
+                <label class="text-muted">
+                    <?php echo Form::checkbox('is_home', null, null, array('disabled', 'disabled')); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.is_home'); ?>
+                    <?php echo Form::hidden('is_home'); ?>
+
+                </label>
+            <?php else: ?>
+                <label>
+                    <?php echo Form::checkbox('is_home'); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.is_home'); ?>
+                </label>
+            <?php endif; ?>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <?php echo Form::checkbox('redirect'); ?> <?php echo \Illuminate\Support\Facades\Lang::get('validation.attributes.redirect to first child'); ?>
+            </label>
+        </div>
+
+        <div class="form-group <?php if($errors->has('template')): ?>has-error <?php endif; ?>">
+            <?php echo Form::label('template', trans('validation.attributes.template'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::text('template', null, array('class' => 'form-control')); ?>
+
+            <?php echo $errors->first('template', '<p class="help-block">:message</p>'); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('css', trans('validation.attributes.css'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::textarea('css', null, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('js', trans('validation.attributes.js'), array('class' => 'control-label')); ?>
+
+            <?php echo Form::textarea('js', null, array('class' => 'form-control')); ?>
+
+        </div>
+
+    </div>
+
+</div>
