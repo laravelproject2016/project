@@ -5653,7 +5653,7 @@ button.close {
 }
 
 .pull-left {
-    float: left !important
+    float: right !important;
 }
 
 .hide {
@@ -8176,9 +8176,9 @@ button.close {
     font-size: 14px;
     min-width: 300px;
     padding: 10px;
-    right: -10px;
+    right: -61px;
     left: auto;
-    background-color: #fff
+    background-color: #fff;
 }
 
 .navbar-nav .open .dropdown-user .img {
