@@ -1,6 +1,18 @@
+@font-face {
+    font-family: 'BYekan';
+    src: url('../fonts/WebYekan.eot');
+    src: url('../fonts/WebYekand41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/WebYekan.woff') format('woff'),
+    url('../fonts/WebYekan.ttf') format('truetype'),
+    url('../fonts/WebYekan.svg#WebYekan') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 *{
     direction: rtl;
     text-align: right;
+    font-family:BYekan
 }
 .alertify, .alertify-cover {
     position: fixed;
@@ -1892,7 +1904,8 @@ caption {
 
 .table > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid #ddd
+    border-bottom: 2px solid #ddd;
+    text-align: right;
 }
 
 .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
