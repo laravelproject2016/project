@@ -1,3 +1,7 @@
+*{
+    direction: rtl;
+    text-align: right;
+}
 .alertify, .alertify-cover {
     position: fixed;
     z-index: 99999
@@ -58,7 +62,7 @@
     top: 50px;
     left: 50%;
     width: 550px;
-    margin-left: -275px;
+    margin-right: -275px;
     opacity: 1
 }
 
@@ -147,7 +151,7 @@
     font-size: 100%;
     display: inline-block;
     cursor: pointer;
-    margin-left: 5px
+    margin-right: 5px
 }
 
 @media only screen and (max-width: 680px) {
@@ -216,7 +220,7 @@
 }
 
 .alertify-button, .alertify-button:active, .alertify-button:focus, .alertify-button:hover {
-    margin-left: 10px;
+    margin-right: 10px;
     border-radius: 4px;
     font-weight: 400;
     padding: 4px 12px;
@@ -841,7 +845,7 @@ ol ol, ol ul, ul ol, ul ul {
 
 .list-inline {
     padding-left: 0;
-    margin-left: -5px
+    margin-right: -5px
 }
 
 .list-inline > li {
@@ -855,7 +859,7 @@ dl {
 }
 
 dd {
-    margin-left: 0
+    margin-right: 0
 }
 
 @media (min-width: 768px) {
@@ -870,7 +874,7 @@ dd {
     }
 
     .dl-horizontal dd {
-        margin-left: 180px
+        margin-right: 180px
     }
 }
 
@@ -977,8 +981,8 @@ pre {
 }
 
 .container, .container-fluid {
-    margin-right: auto;
-    margin-left: auto
+    margin-left: auto;
+    margin-right: auto
 }
 
 pre code {
@@ -1022,8 +1026,8 @@ pre code {
 }
 
 .row {
-    margin-left: -15px;
-    margin-right: -15px
+    margin-right: -15px;
+    margin-left: -15px
 }
 
 .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
@@ -1190,55 +1194,55 @@ pre code {
 }
 
 .col-xs-offset-12 {
-    margin-left: 100%
+    margin-right: 100%
 }
 
 .col-xs-offset-11 {
-    margin-left: 91.66666667%
+    margin-right: 91.66666667%
 }
 
 .col-xs-offset-10 {
-    margin-left: 83.33333333%
+    margin-right: 83.33333333%
 }
 
 .col-xs-offset-9 {
-    margin-left: 75%
+    margin-right: 75%
 }
 
 .col-xs-offset-8 {
-    margin-left: 66.66666667%
+    margin-right: 66.66666667%
 }
 
 .col-xs-offset-7 {
-    margin-left: 58.33333333%
+    margin-right: 58.33333333%
 }
 
 .col-xs-offset-6 {
-    margin-left: 50%
+    margin-right: 50%
 }
 
 .col-xs-offset-5 {
-    margin-left: 41.66666667%
+    margin-right: 41.66666667%
 }
 
 .col-xs-offset-4 {
-    margin-left: 33.33333333%
+    margin-right: 33.33333333%
 }
 
 .col-xs-offset-3 {
-    margin-left: 25%
+    margin-right: 25%
 }
 
 .col-xs-offset-2 {
-    margin-left: 16.66666667%
+    margin-right: 16.66666667%
 }
 
 .col-xs-offset-1 {
-    margin-left: 8.33333333%
+    margin-right: 8.33333333%
 }
 
 .col-xs-offset-0 {
-    margin-left: 0
+    margin-right: 0
 }
 
 @media (min-width: 768px) {
@@ -1399,51 +1403,51 @@ pre code {
     }
 
     .col-sm-offset-12 {
-        margin-left: 100%
+        margin-right: 100%
     }
 
     .col-sm-offset-11 {
-        margin-left: 91.66666667%
+        margin-right: 91.66666667%
     }
 
     .col-sm-offset-10 {
-        margin-left: 83.33333333%
+        margin-right: 83.33333333%
     }
 
     .col-sm-offset-9 {
-        margin-left: 75%
+        margin-right: 75%
     }
 
     .col-sm-offset-8 {
-        margin-left: 66.66666667%
+        margin-right: 66.66666667%
     }
 
     .col-sm-offset-7 {
-        margin-left: 58.33333333%
+        margin-right: 58.33333333%
     }
 
     .col-sm-offset-6 {
-        margin-left: 50%
+        margin-right: 50%
     }
 
     .col-sm-offset-5 {
-        margin-left: 41.66666667%
+        margin-right: 41.66666667%
     }
 
     .col-sm-offset-4 {
-        margin-left: 33.33333333%
+        margin-right: 33.33333333%
     }
 
     .col-sm-offset-2 {
-        margin-left: 16.66666667%
+        margin-right: 16.66666667%
     }
 
     .col-sm-offset-1 {
-        margin-left: 8.33333333%
+        margin-right: 8.33333333%
     }
 
     .col-sm-offset-0 {
-        margin-left: 0
+        margin-right: 0
     }
 }
 
@@ -1815,55 +1819,55 @@ pre code {
     }
 
     .col-lg-offset-12 {
-        margin-left: 100%
+        margin-right: 100%
     }
 
     .col-lg-offset-11 {
-        margin-left: 91.66666667%
+        margin-right: 91.66666667%
     }
 
     .col-lg-offset-10 {
-        margin-left: 83.33333333%
+        margin-right: 83.33333333%
     }
 
     .col-lg-offset-9 {
-        margin-left: 75%
+        margin-right: 75%
     }
 
     .col-lg-offset-8 {
-        margin-left: 66.66666667%
+        margin-right: 66.66666667%
     }
 
     .col-lg-offset-7 {
-        margin-left: 58.33333333%
+        margin-right: 58.33333333%
     }
 
     .col-lg-offset-6 {
-        margin-left: 50%
+        margin-right: 50%
     }
 
     .col-lg-offset-5 {
-        margin-left: 41.66666667%
+        margin-right: 41.66666667%
     }
 
     .col-lg-offset-4 {
-        margin-left: 33.33333333%
+        margin-right: 33.33333333%
     }
 
     .col-lg-offset-3 {
-        margin-left: 25%
+        margin-right: 25%
     }
 
     .col-lg-offset-2 {
-        margin-left: 16.66666667%
+        margin-right: 16.66666667%
     }
 
     .col-lg-offset-1 {
-        margin-left: 8.33333333%
+        margin-right: 8.33333333%
     }
 
     .col-lg-offset-0 {
-        margin-left: 0
+        margin-right: 0
     }
 }
 
@@ -2160,7 +2164,7 @@ textarea.form-control {
 
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
     position: absolute;
-    margin-left: -20px
+    margin-right: -20px
 }
 
 .checkbox + .checkbox, .radio + .radio {
@@ -2178,7 +2182,7 @@ textarea.form-control {
 
 .checkbox-inline + .checkbox-inline, .radio-inline + .radio-inline {
     margin-top: 0;
-    margin-left: 10px
+    margin-right: 10px
 }
 
 .checkbox-inline.disabled, .checkbox.disabled label, .radio-inline.disabled, .radio.disabled label, fieldset[disabled] .checkbox label, fieldset[disabled] .checkbox-inline, fieldset[disabled] .radio label, fieldset[disabled] .radio-inline, fieldset[disabled] input[type=checkbox], fieldset[disabled] input[type=radio], input[type=checkbox].disabled, input[type=checkbox][disabled], input[type=radio].disabled, input[type=radio][disabled] {
@@ -2424,7 +2428,7 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 
     .form-inline .checkbox input[type=checkbox], .form-inline .radio input[type=radio] {
         position: relative;
-        margin-left: 0
+        margin-right: 0
     }
 
     .form-inline .has-feedback .form-control-feedback {
@@ -2447,8 +2451,8 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 }
 
 .form-horizontal .form-group {
-    margin-left: -15px;
-    margin-right: -15px
+    margin-right: -15px;
+    margin-left: -15px
 }
 
 .form-horizontal .has-feedback .form-control-feedback {
@@ -2759,7 +2763,7 @@ tbody.collapse.in {
     display: inline-block;
     width: 0;
     height: 0;
-    margin-left: 2px;
+    margin-right: 2px;
     vertical-align: middle;
     border-top: 4px solid;
     border-right: 4px solid transparent;
@@ -2919,19 +2923,19 @@ tbody.collapse.in {
 }
 
 .btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
-    margin-left: -1px
+    margin-right: -1px
 }
 
 .btn-toolbar {
-    margin-left: -5px
+    margin-right: -5px
 }
 
 .btn-toolbar > .btn, .btn-toolbar > .btn-group, .btn-toolbar > .input-group {
-    margin-left: 5px
+    margin-right: 5px
 }
 
 .btn .caret, .btn-group > .btn:first-child {
-    margin-left: 0
+    margin-right: 0
 }
 
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
@@ -2997,11 +3001,11 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn + .btn, .btn-group-vertical > .btn + .btn-group, .btn-group-vertical > .btn-group + .btn, .btn-group-vertical > .btn-group + .btn-group {
     margin-top: -1px;
-    margin-left: 0
+    margin-right: 0
 }
 
 .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group, .input-group-btn > .btn + .btn {
-    margin-left: -1px
+    margin-right: -1px
 }
 
 .btn-group-vertical > .btn:first-child:not(:last-child) {
@@ -3174,7 +3178,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 }
 
 .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group {
-    margin-right: -1px
+    margin-left: -1px
 }
 
 .nav {
@@ -3233,7 +3237,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 }
 
 .nav-tabs > li > a {
-    margin-right: 2px;
+    margin-left: 2px;
     line-height: 1.42857143;
     border: 1px solid transparent;
     border-radius: 3px 3px 0 0
@@ -3267,7 +3271,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 .nav-tabs.nav-justified > li > a {
     text-align: center;
     margin-bottom: 5px;
-    margin-right: 0;
+    margin-left: 0;
     border-radius: 3px
 }
 
@@ -3301,7 +3305,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 }
 
 .nav-pills > li + li {
-    margin-left: 2px
+    margin-right: 2px
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
@@ -3311,7 +3315,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
 .nav-stacked > li + li {
     margin-top: 2px;
-    margin-left: 0
+    margin-right: 0
 }
 
 .nav-justified {
@@ -3327,7 +3331,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 }
 
 .nav-tabs-justified > li > a {
-    margin-right: 0;
+    margin-left: 0;
     border-radius: 3px
 }
 
@@ -3441,8 +3445,8 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 }
 
 .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
-    margin-right: -15px;
-    margin-left: -15px
+    margin-left: -15px;
+    margin-right: -15px
 }
 
 .navbar-static-top {
@@ -3483,8 +3487,8 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 @media (min-width: 768px) {
     .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
         float: right;
-        margin-right: 0;
-        margin-left: 0
+        margin-left: 0;
+        margin-right: 0
     }
 
     .navbar-fixed-bottom, .navbar-fixed-top, .navbar-static-top {
@@ -3492,7 +3496,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
     }
 
     .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
-        margin-left: -15px
+        margin-right: -15px
     }
 }
 
@@ -3633,7 +3637,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
     .navbar-form .checkbox input[type=checkbox], .navbar-form .radio input[type=radio] {
         position: relative;
-        margin-left: 0
+        margin-right: 0
     }
 
     .navbar-form .has-feedback .form-control-feedback {
@@ -3694,8 +3698,8 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
     .navbar-form {
         width: auto;
         border: 0;
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
         padding-top: 0;
         padding-bottom: 0;
         box-shadow: none
@@ -3703,8 +3707,8 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
     .navbar-text {
         float: left;
-        margin-left: 15px;
-        margin-right: 15px
+        margin-right: 15px;
+        margin-left: 15px
     }
 
     .navbar-left {
@@ -3714,11 +3718,11 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
     .navbar-right {
         float: left !important;
-        margin-right: -15px
+        margin-left: -15px
     }
 
     .navbar-right ~ .navbar-right {
-        margin-right: 0
+        margin-left: 0
     }
 }
 
@@ -3953,7 +3957,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
     color: #428bca;
     background-color: #fff;
     border: 1px solid #ddd;
-    margin-left: -1px
+    margin-right: -1px
 }
 
 .badge, .label {
@@ -3961,7 +3965,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 }
 
 .pagination > li:first-child > a, .pagination > li:first-child > span {
-    margin-left: 0;
+    margin-right: 0;
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px
 }
@@ -4169,11 +4173,11 @@ a.badge:focus, a.badge:hover {
 }
 
 .list-group-item > .badge + .badge {
-    margin-right: 5px
+    margin-left: 5px
 }
 
 .nav-pills > li > a > .badge {
-    margin-left: 3px
+    margin-right: 3px
 }
 
 .jumbotron {
@@ -4231,8 +4235,8 @@ a.badge:focus, a.badge:hover {
 }
 
 .thumbnail a > img, .thumbnail > img {
-    margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+    margin-left: auto
 }
 
 a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
@@ -5102,16 +5106,16 @@ button.close {
 }
 
 .modal-footer .btn + .btn {
-    margin-left: 5px;
+    margin-right: 5px;
     margin-bottom: 0
 }
 
 .modal-footer .btn-group .btn + .btn {
-    margin-left: -1px
+    margin-right: -1px
 }
 
 .modal-footer .btn-block + .btn-block {
-    margin-left: 0
+    margin-right: 0
 }
 
 .modal-scrollbar-measure {
@@ -5174,7 +5178,7 @@ button.close {
 }
 
 .tooltip.right {
-    margin-left: 3px;
+    margin-right: 3px;
     padding: 0 5px
 }
 
@@ -5184,7 +5188,7 @@ button.close {
 }
 
 .tooltip.left {
-    margin-left: -3px;
+    margin-right: -3px;
     padding: 0 5px
 }
 
@@ -5208,7 +5212,7 @@ button.close {
 .tooltip.top .tooltip-arrow {
     bottom: 0;
     left: 50%;
-    margin-left: -5px;
+    margin-right: -5px;
     border-width: 5px 5px 0;
     border-top-color: #000
 }
@@ -5247,7 +5251,7 @@ button.close {
 
 .tooltip.bottom .tooltip-arrow {
     left: 50%;
-    margin-left: -5px
+    margin-right: -5px
 }
 
 .tooltip.bottom-left .tooltip-arrow {
@@ -5293,7 +5297,7 @@ button.close {
 }
 
 .popover.right {
-    margin-left: 10px
+    margin-right: 10px
 }
 
 .popover.bottom {
@@ -5301,7 +5305,7 @@ button.close {
 }
 
 .popover.left {
-    margin-left: -10px
+    margin-right: -10px
 }
 
 .popover-title {
@@ -5345,7 +5349,7 @@ button.close {
 
 .popover.top > .arrow {
     left: 50%;
-    margin-left: -11px;
+    margin-right: -11px;
     border-bottom-width: 0;
     border-top-color: #999;
     border-top-color: rgba(0, 0, 0, .25);
@@ -5354,7 +5358,7 @@ button.close {
 
 .popover.top > .arrow:after {
     bottom: 1px;
-    margin-left: -10px;
+    margin-right: -10px;
     border-bottom-width: 0;
     border-top-color: #fff
 }
@@ -5377,7 +5381,7 @@ button.close {
 
 .popover.bottom > .arrow {
     left: 50%;
-    margin-left: -11px;
+    margin-right: -11px;
     border-top-width: 0;
     border-bottom-color: #999;
     border-bottom-color: rgba(0, 0, 0, .25);
@@ -5386,7 +5390,7 @@ button.close {
 
 .popover.bottom > .arrow:after {
     top: 1px;
-    margin-left: -10px;
+    margin-right: -10px;
     border-top-width: 0;
     border-bottom-color: #fff
 }
@@ -5534,12 +5538,12 @@ button.close {
 
 .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
     left: 50%;
-    margin-left: -10px
+    margin-right: -10px
 }
 
 .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
     right: 50%;
-    margin-right: -10px
+    margin-left: -10px
 }
 
 .carousel-control .icon-next, .carousel-control .icon-prev {
@@ -5564,7 +5568,7 @@ button.close {
     left: 50%;
     z-index: 15;
     width: 60%;
-    margin-left: -30%;
+    margin-right: -30%;
     padding-left: 0
 }
 
@@ -5611,11 +5615,11 @@ button.close {
     }
 
     .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
-        margin-left: -15px
+        margin-right: -15px
     }
 
     .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
-        margin-right: -15px
+        margin-left: -15px
     }
 
     .carousel-caption {
@@ -5640,8 +5644,8 @@ button.close {
 
 .center-block {
     display: block;
-    margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+    margin-left: auto
 }
 
 .pull-right {
@@ -5960,7 +5964,7 @@ button.close {
 
 .fa-ul {
     padding-left: 0;
-    margin-left: 2.14285714em;
+    margin-right: 2.14285714em;
     list-style-type: none
 }
 
@@ -5986,11 +5990,11 @@ button.close {
 }
 
 .fa.pull-left {
-    margin-right: .3em
+    margin-left: .3em
 }
 
 .fa.pull-right {
-    margin-left: .3em
+    margin-right: .3em
 }
 
 .fa-spin {
@@ -8178,11 +8182,11 @@ button.close {
 }
 
 .navbar-nav .open .dropdown-user .img {
-    margin-right: 10px
+    margin-left: 10px
 }
 
 .navbar-nav .open .dropdown-user .info {
-    margin-left: 110px;
+    margin-right: 110px;
     overflow: hidden
 }
 
@@ -8208,8 +8212,8 @@ button.close {
     .navbar-brand {
         padding-left: 15px;
         padding-right: 15px;
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
         font-size: 18px;
         line-height: 20px;
         text-align: left;
@@ -8218,15 +8222,15 @@ button.close {
 }
 
 .navbar-toggle {
-    margin-left: 13px;
+    margin-right: 13px;
     padding: 6px 8px;
     float: left;
 }
 
 .navbar-toggle-left {
     float: right;
-    margin-right: 13px;
-    margin-left: 0;
+    margin-left: 13px;
+    margin-right: 0;
 }
 
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
@@ -8293,7 +8297,7 @@ button.close {
     top: 50%;
     left: 50%;
     margin-top: -22px;
-    margin-left: -22px;
+    margin-right: -22px;
     background-position: 0 -108px;
     opacity: .8;
     cursor: pointer;
@@ -8425,7 +8429,7 @@ button.close {
 
 .fancybox-title-float-wrap .child {
     display: inline-block;
-    margin-right: -100%;
+    margin-left: -100%;
     padding: 2px 20px;
     background: 0 0;
     background: rgba(0, 0, 0, .8);
@@ -8932,8 +8936,8 @@ button.close {
 .picker__month, .picker__year {
     font-weight: 500;
     display: inline-block;
-    margin-left: .25em;
-    margin-right: .25em
+    margin-right: .25em;
+    margin-left: .25em
 }
 
 .picker__year {
@@ -8946,8 +8950,8 @@ button.close {
     border: 1px solid #b7b7b7;
     height: 2em;
     padding: .5em;
-    margin-left: .25em;
-    margin-right: .25em
+    margin-right: .25em;
+    margin-left: .25em
 }
 
 .picker__select--month {
@@ -9142,7 +9146,7 @@ button.close {
 
 .picker__button--clear:before, .picker__button--today:before {
     content: " ";
-    margin-right: .45em
+    margin-left: .45em
 }
 
 .picker__button--today:before {
@@ -9163,7 +9167,7 @@ button.close {
     top: -.1em;
     vertical-align: top;
     font-size: 1.1em;
-    margin-right: .35em;
+    margin-left: .35em;
     color: #777
 }
 
@@ -9405,7 +9409,7 @@ button.close {
 }
 
 .st-sort:before {
-    margin-right: 5px;
+    margin-left: 5px;
     color: #999;
     content: "\f0dc"
 }
@@ -9435,7 +9439,7 @@ button.close {
 }
 
 .sidebar-panel {
-    margin-right: -21px;
+    margin-left: -21px;
     margin-bottom: 20px
 }
 
@@ -9445,7 +9449,7 @@ button.close {
     }
 
     .sidebar-panel {
-        margin-left: -20px
+        margin-right: -20px
     }
 }
 
@@ -9547,8 +9551,8 @@ footer {
     }
 
     .btn-toggle-offcanvas {
-        margin-left: -10px;
-        margin-right: 5px
+        margin-right: -10px;
+        margin-left: 5px
     }
 
     .sidebar-offcanvas {
